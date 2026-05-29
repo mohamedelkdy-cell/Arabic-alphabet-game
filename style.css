@@ -1,0 +1,771 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Tajawal', Arial, sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* خلفية السماء */
+.sky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%);
+    z-index: -1;
+}
+
+/* السحب المتحركة */
+.cloud {
+    position: absolute;
+    background: white;
+    border-radius: 100px;
+    opacity: 0.9;
+    animation: moveCloud 30s linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+    content: '';
+    position: absolute;
+    background: white;
+    border-radius: 100px;
+}
+
+.cloud1 {
+    width: 200px;
+    height: 60px;
+    top: 50px;
+    left: -200px;
+}
+
+.cloud1::before {
+    width: 80px;
+    height: 80px;
+    top: -40px;
+    left: 30px;
+}
+
+.cloud1::after {
+    width: 100px;
+    height: 70px;
+    top: -30px;
+    right: 30px;
+}
+
+.cloud2 {
+    width: 180px;
+    height: 50px;
+    top: 150px;
+    left: -180px;
+    animation-delay: 10s;
+}
+
+.cloud2::before {
+    width: 70px;
+    height: 70px;
+    top: -35px;
+    left: 25px;
+}
+
+.cloud2::after {
+    width: 90px;
+    height: 60px;
+    top: -25px;
+    right: 25px;
+}
+
+.cloud3 {
+    width: 220px;
+    height: 70px;
+    top: 250px;
+    left: -220px;
+    animation-delay: 20s;
+}
+
+.cloud3::before {
+    width: 90px;
+    height: 90px;
+    top: -45px;
+    left: 35px;
+}
+
+.cloud3::after {
+    width: 110px;
+    height: 80px;
+    top: -35px;
+    right: 35px;
+}
+
+@keyframes moveCloud {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(100vw + 250px));
+    }
+}
+
+/* الحاوية الرئيسية */
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* العنوان */
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #2563EB;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.title-icon {
+    font-size: 4rem;
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #1E40AF;
+    margin-top: 30px;
+}
+
+/* الشاشات */
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* قائمة البداية */
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 400px;
+    margin: 40px auto;
+}
+
+/* الأزرار */
+.btn {
+    padding: 18px 30px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Tajawal', Arial, sans-serif;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-orange {
+    background: linear-gradient(135deg, #FF9500 0%, #FF6B00 100%);
+    color: white;
+}
+
+.btn-blue {
+    background: linear-gradient(135deg, #2563EB 0%, #1E40AF 100%);
+    color: white;
+}
+
+.btn-green {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: white;
+}
+
+.btn-red {
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+    color: white;
+}
+
+.btn-small {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+}
+
+/* لوحة النقاط */
+.score-board {
+    background: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.score-label {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1E40AF;
+}
+
+.score-value {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #FF9500;
+}
+
+.trophy {
+    font-size: 1.8rem;
+}
+
+/* أزرار التحكم */
+.controls {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* منطقة الاختيارات - 2x2 كما في الصورة */
+.choices {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid by default */
+    gap: 15px; /* Reduce gap for mobile */
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 0 10px; /* Add some horizontal padding for smaller screens */
+}
+
+@media (max-width: 768px) {
+    .choices {
+        grid-template-columns: repeat(2, 1fr); /* Ensure 2x2 on smaller screens */
+        gap: 10px;
+        margin: 15px auto;
+    }
+
+    .choice-card {
+        padding: 15px; /* Reduce padding */
+        min-height: 180px; /* Ensure a minimum height for cards */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .choice-letter {
+        font-size: 3rem; /* Adjust font size for mobile */
+        margin-bottom: 5px;
+    }
+
+    .choice-emoji {
+        font-size: 3.5rem; /* Adjust emoji size for mobile */
+        margin-bottom: 5px;
+    }
+
+    .choice-word {
+        font-size: 1.1rem; /* Adjust word font size for mobile */
+    }
+}
+
+.choice-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.choice-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+}
+
+.choice-letter {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #2563EB;
+    margin-bottom: 10px;
+}
+
+.choice-emoji {
+    font-size: 5rem;
+    margin-bottom: 10px;
+}
+
+.choice-word {
+    font-size: 1.3rem;
+    color: #64748B;
+    font-weight: 600;
+}
+
+/* تأثير الإجابة الصحيحة */
+.choice-card.correct {
+    animation: correctPulse 0.5s;
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: white;
+}
+
+.choice-card.correct .choice-letter,
+.choice-card.correct .choice-word {
+    color: white;
+}
+
+/* تأثير الإجابة الخاطئة */
+.choice-card.wrong {
+    animation: shake 0.5s;
+    background: #FEE2E2;
+}
+
+@keyframes correctPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* منطقة الرسم */
+.drawing-area {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+.drawing-area.hidden {
+    display: none;
+}
+
+.draw-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #2563EB;
+    margin-bottom: 20px;
+}
+
+#letterCanvas {
+    width: 100%;
+    height: 300px;
+    border: 3px solid #E5E7EB;
+    border-radius: 15px;
+    cursor: crosshair;
+    touch-action: none;
+}
+
+.draw-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* الألعاب النارية */
+.fireworks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.firework {
+    position: absolute;
+    font-size: 3rem;
+    animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* شاشة التعلم */
+.learning-content {
+    background: white;
+    border-radius: 25px;
+    padding: 50px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    max-width: 600px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.letter-display {
+    font-size: 8rem;
+    font-weight: 900;
+    color: #2563EB;
+    margin-bottom: 20px;
+}
+
+.word-display {
+    font-size: 3rem;
+    color: #1E40AF;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.emoji-display {
+    font-size: 6rem;
+    margin-bottom: 30px;
+}
+
+/* الاستجابة للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+    }
+    
+    .btn {
+        font-size: 1.2rem;
+        padding: 15px 25px;
+    }
+    
+    .choices {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .music-toggle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        top: 15px;
+        right: 15px;
+    }
+    
+    .choice-letter {
+        font-size: 3rem;
+    }
+    
+    .learning-content {
+        padding: 30px;
+    }
+    
+    .letter-display {
+        font-size: 6rem;
+    }
+    
+    .word-display {
+        font-size: 2.5rem;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* زر كتم الموسيقى */
+.music-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    color: white;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+    transition: all 0.3s;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.music-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+}
+
+.music-toggle:active {
+    transform: scale(0.95);
+}
+
+.music-toggle.muted {
+    background: linear-gradient(135deg, #9CA3AF 0%, #6B7280 100%);
+    box-shadow: 0 4px 15px rgba(156, 163, 175, 0.4);
+}
+
+
+
+/* زر كتم الموسيقى */
+.music-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 3px solid #2563EB;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+.music-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.music-toggle.muted {
+    background: rgba(255, 100, 100, 0.9);
+    border-color: #DC2626;
+}
+
+/* تخطيط الاختيارات 2x2 كما في الصورة */
+.choices {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 700px;
+    margin: 30px auto;
+}
+
+
+
+/* أيقونة الكتاب في الشاشة الرئيسية */
+.main-screen-icon {
+    text-align: center;
+    font-size: 12rem; /* حجم أكبر جداً للأيقونة */
+    margin-top: 20px; /* لتقريبها من العنوان */
+    margin-bottom: 60px;
+    color: #FFD700; /* لون ذهبي أو حسب الصورة */
+    text-shadow: 6px 6px 12px rgba(0,0,0,0.3);
+}
+
+.main-menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* زيادة المسافة بين الأزرار */
+    max-width: 450px; /* عرض أكبر للأزرار */
+    margin: 40px auto;
+}
+
+.main-menu-buttons .btn {
+    font-size: 1.6rem; /* حجم خط أكبر للأزرار */
+    padding: 20px 35px;
+}
+
+/* تعديل حجم العنوان ليتناسب مع الأيقونة المنفصلة */
+.title {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .main-screen-icon {
+        font-size: 6rem;
+        margin-bottom: 20px;
+    }
+
+    .main-menu-buttons .btn {
+        font-size: 1.4rem;
+        padding: 18px 30px;
+    }
+}
+
+
+/* أزرار التحكم العلوية في شاشة اللعبة */
+.game-controls-top {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.game-controls-top .btn {
+    font-size: 1.2rem;
+    padding: 15px 25px;
+}
+
+/* أزرار التحكم السفلية في شاشة اللعبة */
+.game-controls-bottom {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px; /* إضافة مسافة سفلية */
+}
+
+.game-controls-bottom .btn {
+    font-size: 1.2rem;
+    padding: 15px 25px;
+}
+
+/* تعديل حجم الخط للأحرف والرموز التعبيرية في بطاقات الاختيار */
+.choice-letter {
+    font-size: 4rem; /* Adjust font size */
+    margin-bottom: 10px;
+}
+
+.choice-emoji {
+    font-size: 5rem; /* Adjust emoji size */
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .game-controls-top, .game-controls-bottom {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* شاشة حركات الحروف */
+.harakat-title {
+    font-size: 2rem;
+    color: #FF6B6B;
+    text-align: center;
+    margin: 20px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.letters-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.letter-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    font-family: 'Tajawal', Arial, sans-serif;
+    font-weight: bold;
+}
+
+.letter-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.letter-btn:active {
+    transform: scale(0.95);
+}
+
+.harakat-display {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.harakat-display.hidden {
+    display: none;
+}
+
+.harakat-letters {
+    font-size: 4rem;
+    color: #FF6B6B;
+    font-weight: bold;
+    letter-spacing: 20px;
+    direction: rtl;
+}
+
+.btn-purple {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.btn-purple:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+/* تجاوب مع الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .letters-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        padding: 10px;
+    }
+    
+    .letter-btn {
+        padding: 15px;
+        font-size: 1.5rem;
+    }
+    
+    .harakat-letters {
+        font-size: 3rem;
+        letter-spacing: 15px;
+    }
+    
+    .harakat-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .letters-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+    }
+    
+    .letter-btn {
+        padding: 10px;
+        font-size: 1.2rem;
+    }
+    
+    .harakat-letters {
+        font-size: 2.5rem;
+        letter-spacing: 10px;
+    }
+}

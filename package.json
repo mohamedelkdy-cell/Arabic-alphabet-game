@@ -1,0 +1,20 @@
+{
+  "name": "badr-app",
+  "version": "1.0.0",
+  "description": "تطبيق تفاعلي لتعلم الحروف العربية",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "serve": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "education",
+    "arabic",
+    "letters",
+    "learning",
+    "children",
+    "app"
+  ],
+  "author": "",
+  "license": "MIT"
+}

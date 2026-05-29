@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعلم الحروف العربية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icon.png">
+    <meta name="theme-color" content="#2563EB">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="بدر">
+</head>
+<body>
+    <!-- خلفية السماء -->
+    <div class="sky">
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
+    </div>
+
+
+
+    <!-- الحاوية الرئيسية -->
+    <div class="container">
+        <!-- العنوان -->
+        <h1 class="title">تعلم الحروف العربية</h1>
+            <div class="main-screen-icon">📚</div>
+        
+        <button id="musicToggle" class="music-toggle" title="تشغيل/إيقاف الموسيقى">
+            🔇
+        </button>
+        
+
+
+        <!-- شاشة البداية -->
+        <div id="menuScreen" class="screen active">
+            <div class="menu-buttons main-menu-buttons">
+                <button class="btn btn-orange" onclick="startGame(true)">
+                    🎮 لعبة الاختيار
+                </button>
+                <button class="btn btn-blue" onclick="startLearning()">
+                    📖 تعلم الحروف
+                </button>
+                <button class="btn btn-purple" onclick="startHarakat()">
+                    ✨ حركات الحروف
+                </button>
+            </div>
+            <p class="subtitle">🎉 هيا نتعلم الحروف معاً! 🎉</p>
+        </div>
+
+        <!-- شاشة اللعبة -->
+        <div id="gameScreen" class="screen">
+
+
+            <!-- أزرار التحكم في شاشة اللعبة -->
+            <div class="game-controls-top">
+                <button class="btn btn-orange" onclick="playCurrentLetter()">
+                    🔊 استمع للحرف
+                </button>
+                <button class="btn btn-green" onclick="playCurrentWord()">
+                    🔉 استمع للكلمة
+                </button>
+            </div>
+
+            <!-- منطقة الاختيارات -->
+            <div id="choices" class="choices"></div>
+
+            <div class="game-controls-bottom">
+                <button class="btn btn-blue" onclick="toggleImages()">
+                    🖼️ إخفاء/إظهار الصور
+                </button>
+                <button class="btn btn-red" onclick="backToMenu()">
+                    🏠 القائمة
+                </button>
+            </div>
+
+            <!-- منطقة الرسم -->
+            <div id="drawingArea" class="drawing-area hidden">
+                <h2 class="draw-title">ارسم الحرف <span id="currentLetterDisplay"></span></h2>
+                <canvas id="letterCanvas"></canvas>
+                <div class="draw-controls">
+                    <button class="btn btn-small btn-red" onclick="clearCanvas()">🗑️ مسح</button>
+                    <button class="btn btn-small btn-orange" onclick="nextRound()">➡️ الحرف التالي</button>
+                </div>
+            </div>
+
+            <!-- تأثيرات الاحتفال -->
+            <div id="fireworks" class="fireworks"></div>
+        </div>
+
+        <!-- شاشة التعلم -->
+        <div id="learningScreen" class="screen">
+            <div class="learning-content">
+                <div class="letter-display" id="learningLetter"></div>
+                <div class="word-display" id="learningWord"></div>
+                <div class="emoji-display" id="learningEmoji"></div>
+                <div class="image-display" id="learningImage"></div>
+                
+                <div class="controls">
+                    <button class="btn btn-orange" onclick="playLearningLetter()">
+                        🔊 استمع للحرف
+                    </button>
+                    <button class="btn btn-green" onclick="playLearningWord()">
+                        🔉 استمع للكلمة
+                    </button>
+                    <button class="btn btn-blue" onclick="previousLetter()">
+                        ⬅️ السابق
+                    </button>
+                    <button class="btn btn-blue" onclick="nextLetter()">
+                        ➡️ التالي
+                    </button>
+                    <button class="btn btn-red" onclick="backToMenu()">
+                        🏠 القائمة
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- شاشة حركات الحروف -->
+        <div id="harakatScreen" class="screen">
+            <h2 class="harakat-title">✨ حركات الحروف ✨</h2>
+            
+            <!-- شبكة الحروف -->
+            <div id="lettersGrid" class="letters-grid"></div>
+            
+            <!-- منطقة عرض الحركات -->
+            <div id="harakatDisplay" class="harakat-display hidden">
+                <div class="harakat-letters" id="harakatLetters"></div>
+            </div>
+            
+            <div class="controls">
+                <button class="btn btn-red" onclick="backToMenu()">
+                    🏠 القائمة
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="audio.js"></script>
+    <script src="game.js"></script>
+    <script>
+        // تسجيل Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(registration => {
+                    console.log('Service Worker registered:', registration);
+                })
+                .catch(error => {
+                    console.log('Service Worker registration failed:', error);
+                });
+        }
+    </script>
+</body>
+</html>
+
