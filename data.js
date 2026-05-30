@@ -7,7 +7,7 @@ const lettersData = [
     { letter: 'جَ', word: 'جمل', wordKey: 'jamal', emoji: '🐪' },
     { letter: 'حَ', word: 'حمامة', wordKey: 'hamama', emoji: '🕊️' },
     { letter: 'خَ', word: 'خروف', wordKey: 'kharuf', emoji: '🐑' },
-    { letter: 'دَ', word: 'دم', wordKey: 'dam', emoji: '🩸' },
+    { letter: 'دَ', word: 'دم', wordKey: 'dam', emoji: '🐓' },
     { letter: 'ذَ', word: 'ذيل', wordKey: 'dhayl', emoji: '🦎', image: 'ذيل.png' },
     { letter: 'رَ', word: 'رجل', wordKey: 'rajul', emoji: '👨', image: 'رجل.png' },
     { letter: 'زَ', word: 'زرافة', wordKey: 'zarafa', emoji: '🦒' },
