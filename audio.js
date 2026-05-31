@@ -10,7 +10,7 @@ const wordSoundsMap = {
     'jamal': 'words/word_ج.mp3',
     'hamama': 'words/word_ح.mp3',
     'kharuf': 'words/word_خ.mp3',
-    'dam': 'words/word_د.mp3',
+    'dajaja': 'words/word_د.mp3',
     'dhayl': 'words/word_ذ.mp3',
     'rajul': 'words/word_ر.mp3',
     'zarafa': 'words/word_ز.mp3',
