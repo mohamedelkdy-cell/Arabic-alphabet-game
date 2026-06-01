@@ -900,8 +900,7 @@ function showHarakat(letter) {
 
 }
 
-// تشغيل أصوات الحركات
-
+// تشغيل أصوات الحركات - مع إضافة currentTime = 0
 function playHarakatSounds(letter) {
 
     // خريطة الحروف إلى أسماء الملفات
@@ -976,6 +975,7 @@ function playHarakatSounds(letter) {
 
         const audio = new Audio(soundPath);
 
+        audio.currentTime = 0; // ابدأ من البداية فوراً - بدون تأخير
         audio.playbackRate = 1.0;
 
         audio.volume = 1.0;
