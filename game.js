@@ -908,61 +908,61 @@ function playHarakatSounds(letter) {
 
     const harakatSoundsMap = {
 
-        'أ': 'sounds/harakat/word_أ.mp3',
+        'أ': 'harakat/word_أ.mp3',
 
-        'ب': 'sounds/harakat/word_ب.mp3',
+        'ب': 'harakat/word_ب.mp3',
 
-        'ت': 'sounds/harakat/word_ت.mp3',
+        'ت': 'harakat/word_ت.mp3',
 
-        'ث': 'sounds/harakat/word_ث.mp3',
+        'ث': 'harakat/word_ث.mp3',
 
-        'ج': 'sounds/harakat/word_ج.mp3',
+        'ج': 'harakat/word_ج.mp3',
 
-        'ح': 'sounds/harakat/word_ح.mp3',
+        'ح': 'harakat/word_ح.mp3',
 
-        'خ': 'sounds/harakat/word_خ.mp3',
+        'خ': 'harakat/word_خ.mp3',
 
-        'د': 'sounds/harakat/word_د.mp3',
+        'د': 'harakat/word_د.mp3',
 
-        'ذ': 'sounds/harakat/word_ذ.mp3',
+        'ذ': 'harakat/word_ذ.mp3',
 
-        'ر': 'sounds/harakat/word_ر.mp3',
+        'ر': 'harakat/word_ر.mp3',
 
-        'ز': 'sounds/harakat/word_ز.mp3',
+        'ز': 'harakat/word_ز.mp3',
 
-        'س': 'sounds/harakat/word_س.mp3',
+        'س': 'harakat/word_س.mp3',
 
-        'ش': 'sounds/harakat/word_ش.mp3',
+        'ش': 'harakat/word_ش.mp3',
 
-        'ص': 'sounds/harakat/word_ص.mp3',
+        'ص': 'harakat/word_ص.mp3',
 
-        'ض': 'sounds/harakat/word_ض.mp3',
+        'ض': 'harakat/word_ض.mp3',
 
-        'ط': 'sounds/harakat/word_ط.mp3',
+        'ط': 'harakat/word_ط.mp3',
 
-        'ظ': 'sounds/harakat/word_ظ.mp3',
+        'ظ': 'harakat/word_ظ.mp3',
 
-        'ع': 'sounds/harakat/word_ع.mp3',
+        'ع': 'harakat/word_ع.mp3',
 
-        'غ': 'sounds/harakat/word_غ.mp3',
+        'غ': 'harakat/word_غ.mp3',
 
-        'ف': 'sounds/harakat/word_ف.mp3',
+        'ف': 'harakat/word_ف.mp3',
 
-        'ق': 'sounds/harakat/word_ق.mp3',
+        'ق': 'harakat/word_ق.mp3',
 
-        'ك': 'sounds/harakat/word_ك.mp3',
+        'ك': 'harakat/word_ك.mp3',
 
-        'ل': 'sounds/harakat/word_ل.mp3',
+        'ل': 'harakat/word_ل.mp3',
 
-        'م': 'sounds/harakat/word_م.mp3',
+        'م': 'harakat/word_م.mp3',
 
-        'ن': 'sounds/harakat/word_ن.mp3',
+        'ن': 'harakat/word_ن.mp3',
 
-        'ه': 'sounds/harakat/word_ه.mp3',
+        'ه': 'harakat/word_ه.mp3',
 
-        'و': 'sounds/harakat/word_و.mp3',
+        'و': 'harakat/word_و.mp3',
 
-        'ي': 'sounds/harakat/word_ي.mp3'
+        'ي': 'harakat/word_ي.mp3'
 
     };
 
