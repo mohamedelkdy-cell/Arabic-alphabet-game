@@ -40,7 +40,7 @@ const letterSoundsMap = {
     'ت': 'letters/letter_ta.mp3',
     'ث': 'letters/letter_tha.mp3',
     'ج': 'letters/letter_jeem.mp3',
-    'ح': 'letters/ha_trimmed.mp3',
+    'ح': 'letters/letters_ha.mp3',
     'خ': 'letters/letter_kha.mp3',
     'د': 'letters/letter_dal.mp3',
     'ذ': 'letters/letter_dhal.mp3',
@@ -60,7 +60,7 @@ const letterSoundsMap = {
     'ل': 'letters/letter_lam.mp3',
     'م': 'letters/letter_meem.mp3',
     'ن': 'letters/letter_noon.mp3',
-    'ه': 'letters/ha_trimmed.mp3',
+    'ه': 'letters/letters_ha.mp3',
     'و': 'letters/letter_waw.mp3',
     'ي': 'letters/letter_ya.mp3'
 };
