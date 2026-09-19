@@ -38,27 +38,22 @@
 
             <div id="gameScreen" class="screen">
                 <div class="game-toolbar">
-                    <button class="screen-menu-button" onclick="backToMenu()" aria-label="القائمة">☰</button>
+                    <button class="screen-menu-button" onclick="backToMenu()" aria-label="العودة للقائمة">🏠</button>
                     <div class="screen-title">اختر الحرف الصحيح</div>
                 </div>
-
                 <div class="game-controls-top">
                     <button class="btn btn-orange" onclick="playCurrentLetter()">🔊 استمع للحرف</button>
                     <button class="btn btn-green" onclick="playCurrentWord()">🔉 استمع للكلمة</button>
                 </div>
-
                 <div id="choices" class="choices"></div>
-
                 <div id="drawingPrompt" class="drawing-prompt hidden">
                     <span>أحسنت! هل تريد التدرب على كتابة الحرف؟</span>
                     <button class="btn btn-orange btn-small" onclick="openDrawingMode()">✏️ ارسم الحرف</button>
                 </div>
-
                 <div class="game-controls-bottom">
                     <button class="btn btn-blue" onclick="toggleImages()">🖼️ الصور</button>
                     <button class="btn btn-red" onclick="backToMenu()">🏠 القائمة</button>
                 </div>
-
                 <section id="drawingArea" class="drawing-area hidden" aria-label="منطقة رسم الحرف">
                     <button class="drawing-close" onclick="closeDrawingMode()" aria-label="إغلاق الرسم">×</button>
                     <h2 class="draw-title">ارسم الحرف <span id="currentLetterDisplay"></span></h2>
@@ -70,23 +65,22 @@
                         <button class="btn btn-small btn-blue" onclick="closeDrawingMode()">↩️ العودة للسؤال</button>
                     </div>
                 </section>
-
                 <div id="fireworks" class="fireworks"></div>
             </div>
 
             <div id="learningScreen" class="screen">
-                <button class="screen-menu-button" onclick="backToMenu()" aria-label="القائمة">☰</button>
+                <button class="screen-menu-button" onclick="backToMenu()" aria-label="العودة للقائمة">🏠</button>
                 <div class="learning-content">
                     <div class="letter-display" id="learningLetter"></div>
                     <div class="word-display" id="learningWord"></div>
-                    <div class="emoji-display" id="learningEmoji"></div>
-                    <div class="image-display" id="learningImage"></div>
-
+                    <!-- أزرار الصوت أعلى صورة الحرف -->
                     <div class="controls learning-controls">
                         <button class="btn btn-orange" onclick="playLearningLetter()">🔊 الحرف</button>
                         <button class="btn btn-green" onclick="playLearningWord()">🔉 الكلمة</button>
                     </div>
-
+                    <div class="emoji-display" id="learningEmoji"></div>
+                    <div class="image-display" id="learningImage"></div>
+                    <!-- السابق والتالي في الأسفل -->
                     <div class="controls learning-controls-bottom">
                         <button class="btn btn-blue" onclick="previousLetter()">السابق ➡️</button>
                         <button class="btn btn-blue" onclick="nextLetter()">⬅️ التالي</button>
@@ -95,7 +89,7 @@
             </div>
 
             <div id="harakatScreen" class="screen">
-                <button class="screen-menu-button" onclick="backToMenu()" aria-label="القائمة">☰</button>
+                <button class="screen-menu-button" onclick="backToMenu()" aria-label="العودة للقائمة">🏠</button>
                 <h2 class="harakat-title">✨ حركات الحروف ✨</h2>
                 <div id="lettersGrid" class="letters-grid"></div>
                 <div id="harakatDisplay" class="harakat-display hidden"><div class="harakat-letters" id="harakatLetters"></div></div>
