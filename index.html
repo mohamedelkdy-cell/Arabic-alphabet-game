@@ -14,74 +14,24 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="بدر">
-    <style>
-        /* ترتيب الشاشات الداخلية بشكل مريح على الهاتف */
-        .screen-menu-button {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 60px;
-            height: 60px;
-            border: 3px solid #2563EB;
-            border-radius: 50%;
-            background: rgba(255,255,255,.95);
-            color: #2563EB;
-            font-size: 1.8rem;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,.2);
-            z-index: 2;
-        }
-        .screen-heading {
-            text-align: center;
-            color: #1E40AF;
-            font-size: clamp(1.6rem, 5vw, 2.25rem);
-            margin: 0 0 16px;
-        }
-        .game-controls-top,
-        .learning-audio-controls,
-        .learning-navigation {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-        }
-        .game-controls-top .btn,
-        .learning-audio-controls .btn,
-        .learning-navigation .btn {
-            flex: 1;
-            min-width: 0;
-        }
-        .learning-navigation { margin-top: 16px; }
-        @media (min-width: 769px) {
-            .screen { position: relative; padding-top: 4px; }
-            .screen-menu-button { top: 4px; }
-        }
-        @media (max-width: 768px) {
-            .container { margin: 8px auto; padding: 12px; }
-            .screen-menu-button { top: -2px; left: 2px; width: 50px; height: 50px; font-size: 1.45rem; }
-            .screen-heading { padding: 0 52px; margin-bottom: 12px; line-height: 1.2; }
-            .game-controls-top { margin: 0 auto 10px; gap: 8px; }
-            .game-controls-top .btn,
-            .learning-audio-controls .btn,
-            .learning-navigation .btn { padding: 12px 8px; font-size: .98rem; }
-            .choices { margin-top: 10px; }
-            .learning-content { padding: 22px 14px; margin-top: 8px; }
-            .learning-audio-controls, .learning-navigation { gap: 8px; }
-            .learning-navigation { margin-bottom: 0; }
-        }
-    </style>
 </head>
 <body>
+    <!-- خلفية السماء -->
     <div class="sky">
-        <div class="cloud cloud1"></div><div class="cloud cloud2"></div><div class="cloud cloud3"></div>
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
     </div>
 
+    <!-- الحاوية الرئيسية -->
     <div class="container">
-        <!-- يظهر العنوان والأيقونة في الصفحة الأولى فقط -->
+        <!-- العنوان -->
         <h1 class="title">تعلم الحروف العربية</h1>
         <div class="main-screen-icon">📚</div>
+
         <button id="musicToggle" class="music-toggle" title="تشغيل/إيقاف الموسيقى">🔇</button>
 
+        <!-- شاشة البداية -->
         <div id="menuScreen" class="screen active">
             <div class="menu-buttons main-menu-buttons">
                 <button class="btn btn-orange" onclick="startGame(true)">🎮 لعبة الاختيار</button>
@@ -91,12 +41,11 @@
             <p class="subtitle">🎉 هيا نتعلم الحروف معاً! 🎉</p>
         </div>
 
+        <!-- شاشة اللعبة -->
         <div id="gameScreen" class="screen">
-            <button class="screen-menu-button" onclick="backToMenu()" aria-label="القائمة">☰</button>
-            <h2 class="screen-heading">اختر الحرف الصحيح</h2>
             <div class="game-controls-top">
-                <button class="btn btn-orange" onclick="playCurrentWord()">🔉 استمع للكلمة</button>
-                <button class="btn btn-green" onclick="playCurrentLetter()">🔊 استمع للحرف</button>
+                <button class="btn btn-orange" onclick="playCurrentLetter()">🔊 استمع للحرف</button>
+                <button class="btn btn-green" onclick="playCurrentWord()">🔉 استمع للكلمة</button>
             </div>
             <div id="choices" class="choices"></div>
             <div class="game-controls-bottom">
@@ -114,29 +63,33 @@
             <div id="fireworks" class="fireworks"></div>
         </div>
 
+        <!-- شاشة التعلم -->
         <div id="learningScreen" class="screen">
-            <button class="screen-menu-button" onclick="backToMenu()" aria-label="القائمة">☰</button>
             <div class="learning-content">
                 <div class="letter-display" id="learningLetter"></div>
                 <div class="word-display" id="learningWord"></div>
                 <div class="emoji-display" id="learningEmoji"></div>
                 <div class="image-display" id="learningImage"></div>
-                <div class="learning-audio-controls">
+                <div class="controls">
                     <button class="btn btn-orange" onclick="playLearningLetter()">🔊 استمع للحرف</button>
                     <button class="btn btn-green" onclick="playLearningWord()">🔉 استمع للكلمة</button>
-                </div>
-                <div class="learning-navigation">
-                    <button class="btn btn-blue" onclick="previousLetter()">➡️ السابق</button>
-                    <button class="btn btn-blue" onclick="nextLetter()">⬅️ التالي</button>
+                    <button class="btn btn-blue" onclick="previousLetter()">⬅️ السابق</button>
+                    <button class="btn btn-blue" onclick="nextLetter()">➡️ التالي</button>
+                    <button class="btn btn-red" onclick="backToMenu()">🏠 القائمة</button>
                 </div>
             </div>
         </div>
 
+        <!-- شاشة حركات الحروف -->
         <div id="harakatScreen" class="screen">
-            <button class="screen-menu-button" onclick="backToMenu()" aria-label="القائمة">☰</button>
             <h2 class="harakat-title">✨ حركات الحروف ✨</h2>
             <div id="lettersGrid" class="letters-grid"></div>
-            <div id="harakatDisplay" class="harakat-display hidden"><div class="harakat-letters" id="harakatLetters"></div></div>
+            <div id="harakatDisplay" class="harakat-display hidden">
+                <div class="harakat-letters" id="harakatLetters"></div>
+            </div>
+            <div class="controls">
+                <button class="btn btn-red" onclick="backToMenu()">🏠 القائمة</button>
+            </div>
         </div>
     </div>
 
@@ -145,7 +98,9 @@
     <script src="game.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js').catch(error => console.log('Service Worker registration failed:', error));
+            navigator.serviceWorker.register('sw.js')
+                .then(registration => console.log('Service Worker registered:', registration))
+                .catch(error => console.log('Service Worker registration failed:', error));
         }
     </script>
 </body>
