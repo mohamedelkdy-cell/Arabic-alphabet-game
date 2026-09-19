@@ -51,8 +51,7 @@
                     <button class="btn btn-orange btn-small" onclick="openDrawingMode()">✏️ ارسم الحرف</button>
                 </div>
                 <div class="game-controls-bottom">
-                    <button class="btn btn-blue" onclick="toggleImages()">🖼️ الصور</button>
-                    <button class="btn btn-red" onclick="backToMenu()">🏠 القائمة</button>
+                    <button class="btn btn-blue" onclick="toggleImages()">🖼️ إظهار/إخفاء الصور</button>
                 </div>
                 <section id="drawingArea" class="drawing-area hidden" aria-label="منطقة رسم الحرف">
                     <button class="drawing-close" onclick="closeDrawingMode()" aria-label="إغلاق الرسم">×</button>
@@ -71,16 +70,14 @@
             <div id="learningScreen" class="screen">
                 <button class="screen-menu-button" onclick="backToMenu()" aria-label="العودة للقائمة">🏠</button>
                 <div class="learning-content">
-                    <div class="letter-display" id="learningLetter"></div>
-                    <div class="word-display" id="learningWord"></div>
-                    <!-- أزرار الصوت أعلى صورة الحرف -->
                     <div class="controls learning-controls">
                         <button class="btn btn-orange" onclick="playLearningLetter()">🔊 الحرف</button>
                         <button class="btn btn-green" onclick="playLearningWord()">🔉 الكلمة</button>
                     </div>
+                    <div class="letter-display" id="learningLetter"></div>
+                    <div class="word-display" id="learningWord"></div>
                     <div class="emoji-display" id="learningEmoji"></div>
                     <div class="image-display" id="learningImage"></div>
-                    <!-- السابق والتالي في الأسفل -->
                     <div class="controls learning-controls-bottom">
                         <button class="btn btn-blue" onclick="previousLetter()">السابق ➡️</button>
                         <button class="btn btn-blue" onclick="nextLetter()">⬅️ التالي</button>
