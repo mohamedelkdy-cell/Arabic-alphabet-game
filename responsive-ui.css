@@ -31,258 +31,66 @@ body { min-height: 100svh; overflow-x: hidden; }
     cursor: pointer;
     z-index: 1001;
 }
-.game-toolbar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 56px;
-    margin: 0 auto 10px;
-    max-width: 760px;
+.game-toolbar { display:flex; align-items:center; justify-content:center; min-height:56px; margin:0 auto 10px; max-width:760px; }
+.screen-title { font-size:clamp(1.5rem,4vw,2.1rem); color:#1E40AF; font-weight:800; text-align:center; line-height:1.2; }
+.game-controls-top, .game-controls-bottom { display:flex; align-items:center; justify-content:center; gap:10px; margin:10px auto; max-width:760px; }
+.game-controls-top { flex-wrap:nowrap; }
+.game-controls-top .btn { flex:0 1 auto; }
+.choices { width:min(100%,720px); gap:12px; margin:14px auto; }
+.choice-card { min-height:clamp(130px,23vh,205px); padding:14px; }
+.choice-card img { max-width:64px; max-height:64px; }
+.drawing-prompt { display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; width:min(100%,720px); margin:12px auto; padding:12px 16px; border-radius:18px; background:rgba(255,255,255,.88); color:#1e40af; font-weight:700; box-shadow:0 4px 15px rgba(0,0,0,.1); }
+.drawing-prompt.hidden { display:none; }
+.drawing-area { position:fixed; inset:max(10px,env(safe-area-inset-top,0px)) 10px max(10px,var(--safe-bottom)); z-index:2000; width:auto; max-width:none; height:auto; max-height:calc(100svh - 20px); overflow:auto; margin:0; padding:clamp(18px,4vw,32px); display:flex; flex-direction:column; justify-content:center; }
+.drawing-close { position:absolute; inset-block-start:10px; inset-inline-start:14px; border:0; background:#fee2e2; color:#b91c1c; border-radius:50%; width:38px; height:38px; font-size:27px; cursor:pointer; line-height:1; }
+.draw-help { text-align:center; color:#64748b; margin:-10px 0 12px; }
+#letterCanvas { width:100%; height:min(40svh,300px); min-height:180px; }
+.draw-controls { flex-wrap:wrap; }
+.learning-content { margin-top:12px; padding:18px 14px 10px; max-width:600px; }
+.learning-controls, .learning-controls-bottom { display:flex; justify-content:center; align-items:center; gap:8px; flex-wrap:wrap; margin-top:12px; }
+.learning-controls .btn, .learning-controls-bottom .btn { flex:1; min-width:120px; }
+.harakat-title { margin-top:12px; margin-bottom:8px; }
+@media (max-width:600px) {
+  .container { width:calc(100% - 16px); min-height:100svh; padding:10px 0 calc(10px + var(--safe-bottom)); }
+  .title { font-size:clamp(2rem,9vw,2.8rem); margin-bottom:4px; }
+  .main-screen-icon { font-size:clamp(6rem,29vw,9rem); margin:4px 0 22px; }
+  .music-toggle { top:20px; right:20px; width:50px; height:50px; font-size:1.5rem; }
+  .main-menu-buttons { width:min(100%,450px); gap:16px; margin:22px auto; }
+  .main-menu-buttons .btn { width:100%; min-height:56px; font-size:1.3rem; padding:15px 18px; }
+  .screen-menu-button { top:20px; left:20px; width:50px; height:50px; font-size:1.45rem; }
+  .game-toolbar { min-height:52px; margin-bottom:8px; }
+  .screen-title { font-size:1.45rem; }
+  .game-controls-top { width:100%; flex-direction:row !important; flex-wrap:nowrap !important; gap:8px; margin:10px auto 18px; }
+  .game-controls-top .btn { flex:1 1 0; min-width:0; min-height:50px; padding:10px 6px; font-size:.92rem; white-space:nowrap; }
+  .game-controls-bottom { margin:18px auto; }
+  .game-controls-bottom .btn { min-height:50px; padding:10px 14px; font-size:1rem; }
+  .choices { width:100%; gap:10px; margin:14px auto; padding:0 2px; }
+  .choice-card { min-height:clamp(145px,23svh,190px); padding:14px 8px; border-radius:16px; }
+  .choice-card img { width:72px !important; height:72px !important; }
+  .choice-letter { font-size:clamp(2.8rem,13vw,4rem); }
+  .choice-emoji { font-size:clamp(3rem,15vw,4.5rem); }
+  .choice-word { font-size:1.05rem; }
+  .drawing-prompt { font-size:.95rem; gap:8px; }
+  .drawing-prompt .btn { padding:10px 13px; font-size:.9rem; }
+  .drawing-area { inset:5px; max-height:calc(100svh - 10px); border-radius:20px; }
+  .draw-title { font-size:1.45rem; margin-bottom:10px; }
+  #letterCanvas { height:38svh; min-height:170px; }
+  .draw-controls .btn { padding:10px 11px; font-size:.9rem; }
+  #learningScreen { padding-top:78px; padding-bottom:20px; }
+  #learningScreen .learning-content { width:100%; margin:0 auto; padding:20px 12px 18px; max-height:none; overflow:visible; }
+  #learningScreen .learning-controls { margin-top:0; margin-bottom:24px; gap:10px; }
+  #learningScreen .letter-display { margin-top:22px; font-size:clamp(6rem,29vw,8rem); margin-bottom:8px; }
+  #learningScreen .learning-controls-bottom { margin-top:28px; gap:10px; }
+  #learningScreen .learning-controls .btn, #learningScreen .learning-controls-bottom .btn { min-height:52px; min-width:0; padding:10px 8px; font-size:.95rem; }
+  #learningScreen .word-display { font-size:clamp(2rem,10vw,2.8rem); margin-bottom:14px; }
+  #learningScreen .emoji-display { font-size:clamp(4.5rem,21vw,6.5rem); margin-bottom:16px; }
+  #harakatScreen { padding-top:78px; padding-bottom:24px; }
+  #harakatScreen .harakat-title { margin-top:14px; margin-bottom:14px; font-size:1.6rem; }
+  #harakatScreen .letters-grid { padding:8px 0; gap:8px; }
 }
-.screen-title {
-    font-size: clamp(1.5rem, 4vw, 2.1rem);
-    color: #1E40AF;
-    font-weight: 800;
-    text-align: center;
-    line-height: 1.2;
-}
-.game-controls-top,
-.game-controls-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin: 10px auto;
-    max-width: 760px;
-}
-.game-controls-top { flex-wrap: nowrap; }
-.game-controls-top .btn { flex: 0 1 auto; }
-.choices {
-    width: min(100%, 720px);
-    gap: 12px;
-    margin: 14px auto;
-}
-.choice-card {
-    min-height: clamp(130px, 23vh, 205px);
-    padding: 14px;
-}
-.choice-card img { max-width: 64px; max-height: 64px; }
-.drawing-prompt {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    flex-wrap: wrap;
-    width: min(100%, 720px);
-    margin: 12px auto;
-    padding: 12px 16px;
-    border-radius: 18px;
-    background: rgba(255,255,255,.88);
-    color: #1e40af;
-    font-weight: 700;
-    box-shadow: 0 4px 15px rgba(0,0,0,.1);
-}
-.drawing-prompt.hidden { display: none; }
-.drawing-area {
-    position: fixed;
-    inset: max(10px, env(safe-area-inset-top, 0px)) 10px max(10px, var(--safe-bottom));
-    z-index: 2000;
-    width: auto;
-    max-width: none;
-    height: auto;
-    max-height: calc(100svh - 20px);
-    overflow: auto;
-    margin: 0;
-    padding: clamp(18px, 4vw, 32px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.drawing-close {
-    position: absolute;
-    inset-block-start: 10px;
-    inset-inline-start: 14px;
-    border: 0;
-    background: #fee2e2;
-    color: #b91c1c;
-    border-radius: 50%;
-    width: 38px;
-    height: 38px;
-    font-size: 27px;
-    cursor: pointer;
-    line-height: 1;
-}
-.draw-help { text-align: center; color: #64748b; margin: -10px 0 12px; }
-#letterCanvas { width: 100%; height: min(40svh, 300px); min-height: 180px; }
-.draw-controls { flex-wrap: wrap; }
-.learning-content { margin-top: 12px; padding: 18px 14px 10px; max-width: 600px; }
-.learning-controls,
-.learning-controls-bottom {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-top: 12px;
-}
-.learning-controls .btn,
-.learning-controls-bottom .btn { flex: 1; min-width: 120px; }
-.harakat-title { margin-top: 12px; margin-bottom: 8px; }
-
-@media (max-width: 600px) {
-    .container {
-        width: calc(100% - 16px);
-        min-height: 100svh;
-        padding: 10px 0 calc(10px + var(--safe-bottom));
-    }
-    .title {
-        font-size: clamp(2rem, 9vw, 2.8rem);
-        margin-bottom: 4px;
-    }
-    .main-screen-icon {
-        font-size: clamp(6rem, 29vw, 9rem);
-        margin: 4px 0 22px;
-    }
-    .music-toggle {
-        top: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-    }
-    .main-menu-buttons {
-        width: min(100%, 450px);
-        gap: 16px;
-        margin: 22px auto;
-    }
-    .main-menu-buttons .btn {
-        width: 100%;
-        min-height: 56px;
-        font-size: 1.3rem;
-        padding: 15px 18px;
-    }
-    .screen-menu-button {
-        top: 20px;
-        left: 20px;
-        width: 50px;
-        height: 50px;
-        font-size: 1.45rem;
-    }
-    .game-toolbar {
-        min-height: 52px;
-        margin-bottom: 8px;
-    }
-    .screen-title { font-size: 1.45rem; }
-    .game-controls-top {
-        width: 100%;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        gap: 8px;
-        margin: 10px auto 18px;
-    }
-    .game-controls-top .btn {
-        flex: 1 1 0;
-        min-width: 0;
-        min-height: 50px;
-        padding: 10px 6px;
-        font-size: .92rem;
-        white-space: nowrap;
-    }
-    .game-controls-bottom { margin: 18px auto; }
-    .game-controls-bottom .btn {
-        min-height: 50px;
-        padding: 10px 14px;
-        font-size: 1rem;
-    }
-    .choices {
-        width: 100%;
-        gap: 10px;
-        margin: 14px auto;
-        padding: 0 2px;
-    }
-    .choice-card {
-        min-height: clamp(145px, 23svh, 190px);
-        padding: 14px 8px;
-        border-radius: 16px;
-    }
-    .choice-card img { width: 72px !important; height: 72px !important; }
-    .choice-letter { font-size: clamp(2.8rem, 13vw, 4rem); }
-    .choice-emoji { font-size: clamp(3rem, 15vw, 4.5rem); }
-    .choice-word { font-size: 1.05rem; }
-    .drawing-prompt { font-size: .95rem; gap: 8px; }
-    .drawing-prompt .btn { padding: 10px 13px; font-size: .9rem; }
-    .drawing-area {
-        inset: 5px;
-        max-height: calc(100svh - 10px);
-        border-radius: 20px;
-    }
-    .draw-title { font-size: 1.45rem; margin-bottom: 10px; }
-    #letterCanvas { height: 38svh; min-height: 170px; }
-    .draw-controls .btn { padding: 10px 11px; font-size: .9rem; }
-
-    /* شاشة التعلم: إبعاد البطاقة عن زر القائمة ومنحها مساحة عمودية واضحة */
-    #learningScreen {
-        padding-top: 78px;
-        padding-bottom: 20px;
-    }
-    #learningScreen .learning-content {
-        width: 100%;
-        margin: 0 auto;
-        padding: 20px 12px 18px;
-        max-height: none;
-        overflow: visible;
-    }
-    #learningScreen .learning-controls {
-        margin-top: 0;
-        margin-bottom: 24px;
-        gap: 10px;
-    }
-    #learningScreen .learning-controls-bottom {
-        margin-top: 28px;
-        gap: 10px;
-    }
-    #learningScreen .learning-controls .btn,
-    #learningScreen .learning-controls-bottom .btn {
-        min-height: 52px;
-        min-width: 0;
-        padding: 10px 8px;
-        font-size: .95rem;
-    }
-    #learningScreen .letter-display {
-        font-size: clamp(6rem, 29vw, 8rem);
-        margin-bottom: 8px;
-    }
-    #learningScreen .word-display {
-        font-size: clamp(2rem, 10vw, 2.8rem);
-        margin-bottom: 14px;
-    }
-    #learningScreen .emoji-display {
-        font-size: clamp(4.5rem, 21vw, 6.5rem);
-        margin-bottom: 16px;
-    }
-
-    /* شاشة الحركات: إنزال المحتوى حتى يكون في منتصف الصفحة تقريبًا */
-    #harakatScreen {
-        padding-top: 78px;
-        padding-bottom: 24px;
-    }
-    #harakatScreen .harakat-title {
-        margin-top: 14px;
-        margin-bottom: 14px;
-        font-size: 1.6rem;
-    }
-    #harakatScreen .letters-grid {
-        padding: 8px 0;
-        gap: 8px;
-    }
-    #harakatScreen > .controls {
-        margin-top: 24px;
-    }
-}
-
-@media (max-height: 650px) and (min-width: 601px) {
-    .main-screen-icon { font-size: 6rem; margin: 0 0 10px; }
-    .title { font-size: 2.8rem; }
-    .main-menu-buttons { margin: 14px auto; gap: 10px; }
-    .main-menu-buttons .btn { padding: 12px 22px; }
+@media (max-height:650px) and (min-width:601px) {
+  .main-screen-icon { font-size:6rem; margin:0 0 10px; }
+  .title { font-size:2.8rem; }
+  .main-menu-buttons { margin:14px auto; gap:10px; }
+  .main-menu-buttons .btn { padding:12px 22px; }
 }
