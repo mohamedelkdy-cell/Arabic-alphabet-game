@@ -2,13 +2,12 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تعلم الحروف العربية</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsive-ui.css">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" href="icon.png">
     <meta name="theme-color" content="#2563EB">
@@ -17,87 +16,92 @@
     <meta name="apple-mobile-web-app-title" content="بدر">
 </head>
 <body>
-    <div class="sky" aria-hidden="true">
-        <div class="cloud cloud1"></div><div class="cloud cloud2"></div><div class="cloud cloud3"></div>
+    <!-- خلفية السماء -->
+    <div class="sky">
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
     </div>
+
+    <!-- الحاوية الرئيسية -->
     <div class="container">
-        <header class="app-header" id="mainAppHeader">
-            <h1 class="title">تعلم الحروف العربية</h1>
-            <div class="main-screen-icon" aria-hidden="true">📚</div>
-            <button id="musicToggle" class="music-toggle" title="تشغيل أو إيقاف الموسيقى" aria-label="تشغيل أو إيقاف الموسيقى">🔇</button>
-        </header>
-        <main>
-            <div id="menuScreen" class="screen active">
-                <div class="menu-buttons main-menu-buttons">
-                    <button class="btn btn-orange" onclick="startGame(true)">🎮 لعبة الاختيار</button>
-                    <button class="btn btn-blue" onclick="startLearning()">📖 تعلّم الحروف</button>
-                    <button class="btn btn-purple" onclick="startHarakat()">✨ حركات الحروف</button>
-                </div>
-                <p class="subtitle">🎉 هيا نتعلم الحروف معاً! 🎉</p>
-            </div>
+        <!-- العنوان -->
+        <h1 class="title">تعلم الحروف العربية</h1>
+        <div class="main-screen-icon">📚</div>
 
-            <div id="gameScreen" class="screen">
-                <div class="game-toolbar">
-                    <button class="screen-menu-button" onclick="backToMenu()" aria-label="العودة للقائمة">🏠</button>
-                    <div class="screen-title">اختر الحرف الصحيح</div>
-                </div>
-                <div class="game-controls-top">
-                    <button class="btn btn-orange" onclick="playCurrentLetter()">🔊 استمع للحرف</button>
-                    <button class="btn btn-green" onclick="playCurrentWord()">🔉 استمع للكلمة</button>
-                </div>
-                <div id="choices" class="choices"></div>
-                <div id="drawingPrompt" class="drawing-prompt hidden">
-                    <span>أحسنت! هل تريد التدرب على كتابة الحرف؟</span>
-                    <button class="btn btn-orange btn-small" onclick="openDrawingMode()">✏️ ارسم الحرف</button>
-                </div>
-                <div class="game-controls-bottom">
-                    <button class="btn btn-blue" onclick="toggleImages()">🖼️ إظهار/إخفاء الصور</button>
-                </div>
-                <section id="drawingArea" class="drawing-area hidden" aria-label="منطقة رسم الحرف">
-                    <button class="drawing-close" onclick="closeDrawingMode()" aria-label="إغلاق الرسم">×</button>
-                    <h2 class="draw-title">ارسم الحرف <span id="currentLetterDisplay"></span></h2>
-                    <p class="draw-help">تتبع الحرف داخل المسار ثم جرّب مرة أخرى إن أردت</p>
-                    <canvas id="letterCanvas"></canvas>
-                    <div class="draw-controls">
-                        <button class="btn btn-small btn-red" onclick="clearCanvas()">🗑️ مسح</button>
-                        <button class="btn btn-small btn-orange" onclick="nextRound()">➡️ الحرف التالي</button>
-                        <button class="btn btn-small btn-blue" onclick="closeDrawingMode()">↩️ العودة للسؤال</button>
-                    </div>
-                </section>
-                <div id="fireworks" class="fireworks"></div>
-            </div>
+        <button id="musicToggle" class="music-toggle" title="تشغيل/إيقاف الموسيقى">🔇</button>
 
-            <div id="learningScreen" class="screen">
-                <button class="screen-menu-button" onclick="backToMenu()" aria-label="العودة للقائمة">🏠</button>
-                <div class="learning-content">
-                    <div class="controls learning-controls">
-                        <button class="btn btn-orange" onclick="playLearningLetter()">🔊 الحرف</button>
-                        <button class="btn btn-green" onclick="playLearningWord()">🔉 الكلمة</button>
-                    </div>
-                    <div class="letter-display" id="learningLetter"></div>
-                    <div class="word-display" id="learningWord"></div>
-                    <div class="emoji-display" id="learningEmoji"></div>
-                    <div class="image-display" id="learningImage"></div>
-                    <div class="controls learning-controls-bottom">
-                        <button class="btn btn-blue" onclick="previousLetter()">السابق ➡️</button>
-                        <button class="btn btn-blue" onclick="nextLetter()">⬅️ التالي</button>
-                    </div>
+        <!-- شاشة البداية -->
+        <div id="menuScreen" class="screen active">
+            <div class="menu-buttons main-menu-buttons">
+                <button class="btn btn-orange" onclick="startGame(true)">🎮 لعبة الاختيار</button>
+                <button class="btn btn-blue" onclick="startLearning()">📖 تعلم الحروف</button>
+                <button class="btn btn-purple" onclick="startHarakat()">✨ حركات الحروف</button>
+            </div>
+            <p class="subtitle">🎉 هيا نتعلم الحروف معاً! 🎉</p>
+        </div>
+
+        <!-- شاشة اللعبة -->
+        <div id="gameScreen" class="screen">
+            <div class="game-controls-top">
+                <button class="btn btn-orange" onclick="playCurrentLetter()">🔊 استمع للحرف</button>
+                <button class="btn btn-green" onclick="playCurrentWord()">🔉 استمع للكلمة</button>
+            </div>
+            <div id="choices" class="choices"></div>
+            <div class="game-controls-bottom">
+                <button class="btn btn-blue" onclick="toggleImages()">🖼️ إخفاء/إظهار الصور</button>
+                <button class="btn btn-red" onclick="backToMenu()">🏠 القائمة</button>
+            </div>
+            <div id="drawingArea" class="drawing-area hidden">
+                <h2 class="draw-title">ارسم الحرف <span id="currentLetterDisplay"></span></h2>
+                <canvas id="letterCanvas"></canvas>
+                <div class="draw-controls">
+                    <button class="btn btn-small btn-red" onclick="clearCanvas()">🗑️ مسح</button>
+                    <button class="btn btn-small btn-orange" onclick="nextRound()">➡️ الحرف التالي</button>
                 </div>
             </div>
+            <div id="fireworks" class="fireworks"></div>
+        </div>
 
-            <div id="harakatScreen" class="screen">
-                <button class="screen-menu-button" onclick="backToMenu()" aria-label="العودة للقائمة">🏠</button>
-                <h2 class="harakat-title">✨ حركات الحروف ✨</h2>
-                <div id="lettersGrid" class="letters-grid"></div>
-                <div id="harakatDisplay" class="harakat-display hidden"><div class="harakat-letters" id="harakatLetters"></div></div>
-                <div class="controls"><button class="btn btn-red" onclick="backToMenu()">🏠 القائمة</button></div>
+        <!-- شاشة التعلم -->
+        <div id="learningScreen" class="screen">
+            <div class="learning-content">
+                <div class="letter-display" id="learningLetter"></div>
+                <div class="word-display" id="learningWord"></div>
+                <div class="emoji-display" id="learningEmoji"></div>
+                <div class="image-display" id="learningImage"></div>
+                <div class="controls">
+                    <button class="btn btn-orange" onclick="playLearningLetter()">🔊 استمع للحرف</button>
+                    <button class="btn btn-green" onclick="playLearningWord()">🔉 استمع للكلمة</button>
+                    <button class="btn btn-blue" onclick="previousLetter()">⬅️ السابق</button>
+                    <button class="btn btn-blue" onclick="nextLetter()">➡️ التالي</button>
+                    <button class="btn btn-red" onclick="backToMenu()">🏠 القائمة</button>
+                </div>
             </div>
-        </main>
+        </div>
+
+        <!-- شاشة حركات الحروف -->
+        <div id="harakatScreen" class="screen">
+            <h2 class="harakat-title">✨ حركات الحروف ✨</h2>
+            <div id="lettersGrid" class="letters-grid"></div>
+            <div id="harakatDisplay" class="harakat-display hidden">
+                <div class="harakat-letters" id="harakatLetters"></div>
+            </div>
+            <div class="controls">
+                <button class="btn btn-red" onclick="backToMenu()">🏠 القائمة</button>
+            </div>
+        </div>
     </div>
+
     <script src="data.js"></script>
     <script src="audio.js"></script>
     <script src="game.js"></script>
-    <script src="ui-enhancements.js"></script>
-    <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});</script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(registration => console.log('Service Worker registered:', registration))
+                .catch(error => console.log('Service Worker registration failed:', error));
+        }
+    </script>
 </body>
 </html>
