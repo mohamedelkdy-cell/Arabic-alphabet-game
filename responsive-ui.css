@@ -173,13 +173,12 @@ body { min-height: 100svh; overflow-x: hidden; }
         margin-bottom: 8px;
     }
     .screen-title { font-size: 1.45rem; }
-    /* الزران في صف واحد فوق البطاقات */
     .game-controls-top {
         width: 100%;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
         gap: 8px;
-        margin: 10px auto 14px;
+        margin: 10px auto 18px;
     }
     .game-controls-top .btn {
         flex: 1 1 0;
@@ -189,7 +188,7 @@ body { min-height: 100svh; overflow-x: hidden; }
         font-size: .92rem;
         white-space: nowrap;
     }
-    .game-controls-bottom { margin: 14px auto; }
+    .game-controls-bottom { margin: 18px auto; }
     .game-controls-bottom .btn {
         min-height: 50px;
         padding: 10px 14px;
@@ -220,30 +219,65 @@ body { min-height: 100svh; overflow-x: hidden; }
     .draw-title { font-size: 1.45rem; margin-bottom: 10px; }
     #letterCanvas { height: 38svh; min-height: 170px; }
     .draw-controls .btn { padding: 10px 11px; font-size: .9rem; }
-    .learning-content {
+
+    /* شاشة التعلم: إبعاد البطاقة عن زر القائمة ومنحها مساحة عمودية واضحة */
+    #learningScreen {
+        padding-top: 78px;
+        padding-bottom: 20px;
+    }
+    #learningScreen .learning-content {
         width: 100%;
-        padding: 20px 12px 14px;
-        margin-top: 12px;
-        max-height: calc(100svh - 80px);
-        overflow: auto;
+        margin: 0 auto;
+        padding: 20px 12px 18px;
+        max-height: none;
+        overflow: visible;
     }
-    .learning-controls,
-    .learning-controls-bottom {
-        gap: 8px;
-        margin-top: 10px;
+    #learningScreen .learning-controls {
+        margin-top: 0;
+        margin-bottom: 24px;
+        gap: 10px;
     }
-    .learning-controls .btn,
-    .learning-controls-bottom .btn {
-        min-height: 50px;
+    #learningScreen .learning-controls-bottom {
+        margin-top: 28px;
+        gap: 10px;
+    }
+    #learningScreen .learning-controls .btn,
+    #learningScreen .learning-controls-bottom .btn {
+        min-height: 52px;
         min-width: 0;
         padding: 10px 8px;
         font-size: .95rem;
     }
-    .letter-display { font-size: clamp(6rem, 29vw, 8rem); margin-bottom: 6px; }
-    .word-display { font-size: clamp(2rem, 10vw, 2.8rem); margin-bottom: 8px; }
-    .emoji-display { font-size: clamp(4.5rem, 21vw, 6.5rem); margin-bottom: 12px; }
-    .letters-grid { padding: 8px 0; gap: 8px; }
-    .harakat-title { font-size: 1.6rem; }
+    #learningScreen .letter-display {
+        font-size: clamp(6rem, 29vw, 8rem);
+        margin-bottom: 8px;
+    }
+    #learningScreen .word-display {
+        font-size: clamp(2rem, 10vw, 2.8rem);
+        margin-bottom: 14px;
+    }
+    #learningScreen .emoji-display {
+        font-size: clamp(4.5rem, 21vw, 6.5rem);
+        margin-bottom: 16px;
+    }
+
+    /* شاشة الحركات: إنزال المحتوى حتى يكون في منتصف الصفحة تقريبًا */
+    #harakatScreen {
+        padding-top: 78px;
+        padding-bottom: 24px;
+    }
+    #harakatScreen .harakat-title {
+        margin-top: 14px;
+        margin-bottom: 14px;
+        font-size: 1.6rem;
+    }
+    #harakatScreen .letters-grid {
+        padding: 8px 0;
+        gap: 8px;
+    }
+    #harakatScreen > .controls {
+        margin-top: 24px;
+    }
 }
 
 @media (max-height: 650px) and (min-width: 601px) {
